@@ -1,33 +1,28 @@
 # Quick Start with Docker
 
-We can deploy PostgreSQL with VidarDB in Docker container.
+We can easily deploy PostgreSQL with VidarDB in Docker container. The following documentation will guide you to run VidarDB successfully in a few minutes.
 
-## Testing
+## Requirement
 
-Start the container with the following docker image we have provided.
+- [Docker](https://docs.docker.com/install/#supported-platforms)
 
-### Install docker engine
-
-Docker engine is available on multiple platforms and just follow the [official doc](https://docs.docker.com/install/#supported-platforms) to choose the best installation option for you.
-
-### Run a docker container
+## Run a VidarDB's Docker container
 
 ```sh
-# we should ensure that both the container name 'postgresql' and the port '5432' 
-# have not been used in our environment
+# before running the following command, we should ensure that both the container name 
+# 'postgresql' and the port '5432' have not been used in our environment
 docker run -d --name postgresql -p 5432:5432 vidardb/postgresql:vidardb-latest
 ```
 
 After executing the before command, the `postgresql` container will start and initialize
 the database. Normally we should wait for 25~30s, and then its status will become `healthy`.
-
-We can run the following command to query the `postgresql` container status:
+We can run the following command to query the container status of `postgresql`:
 
 ```sh
 docker ps -f name=postgresql
 ```
 
-### Connect to the PostgreSQL after the container is `healthy`
+## Connect to the PostgreSQL
 
 ```sh
 psql -h 127.0.0.1 -p 5432 -U postgres
@@ -35,23 +30,7 @@ psql -h 127.0.0.1 -p 5432 -U postgres
 
 Please note that PostgreSQL client should already be installed before running the container.
 
-## Building
-
-We can build a new docker image in the following way. It is the prerequisite that install docker engine in the building machine.
-
-```sh
-# building docker image with default image repository and name 'vidardb/postgresql:vidardb-latest'
-
-make docker-image
-```
-
-We can also specify the build parameters:
-
-```sh
-REGISTRY=<YOUR REGISTRY ADDRESS> IMAGE=<YOUR IMAGE NAME> TAG=<YOUR IMAGE TAG> make docker-image 
-```
-
-## Installing MADLib
+## Install MADLib
 
 If you need to install MADLib for a new created database in `postgresql` container, you can run the following instruction:
 
@@ -65,4 +44,3 @@ then you can install madlib like this:
 ```sh
 docker exec -it postgresql sh -c "install-madlib.sh -U madlib -D madlib"
 ```
-
