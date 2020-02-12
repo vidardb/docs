@@ -1,0 +1,7 @@
+site_name: VidarDB
+theme:
+    name: 'rtd-dropdown'
+repo_url: https://github.com/vidardb/vidardb
+site_author: VidarDB Team
+copyright: 2020 VidarDB Inc. All Rights Reserved.
+
