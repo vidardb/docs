@@ -13,8 +13,5 @@ install:
   - pip3 install -r requirements.txt
   - git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git && cd mkdocs-rtd-dropdown && python3 setup.py install
 
-deploy:
-  provider: script
-  script: mkdocs gh-deploy
-  on:
-    branch: master
+script:
+  - mkdocs gh-deploy
