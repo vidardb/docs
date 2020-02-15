@@ -14,4 +14,11 @@ install:
   - git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git && cd mkdocs-rtd-dropdown && python3 setup.py install && cd ..
 
 script:
-  - mkdocs gh-deploy
+  - mkdocs build
+
+deploy:
+  provider: script
+  github_token: $GITHUB_TOKEN
+  script: mkdocs gh-deploy
+  on:
+    branch: master
