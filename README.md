@@ -26,7 +26,7 @@ python3 setup.py install
 
 ## Naming rule
 
-We need to be careful that there is a special naming rule using this theme:
+We need to be careful that there is a special naming rule when using this theme:
 the name of a markdown file should be consistent with the heading of that file.
 
 For example:
