@@ -11,13 +11,16 @@ addons:
 
 install:
   - pip3 install -r requirements.txt
-  - git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git && cd mkdocs-rtd-dropdown && python3 setup.py install
+  - git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git && cd mkdocs-rtd-dropdown && python3 setup.py install && cd ..
 
 script:
-  - mkdocs build
+  - mkdocs build -v
 
 deploy:
-  provider: script
-  script: mkdocs gh-deploy
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  verbose: true
+  github_token: $GITHUB_TOKEN
   on:
     branch: master
