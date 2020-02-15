@@ -1,5 +1,7 @@
 # VidarDB Documentation
 
+[![Build Status](https://travis-ci.org/vidardb/docs.svg?branch=master)](https://travis-ci.org/vidardb/docs)
+
 ## Requirement
 
 - Only tested with Python3.7
