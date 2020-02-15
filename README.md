@@ -12,7 +12,7 @@
 pip3 install -r requirements.txt
 ```
 
-- Install `mkdocs-rtd-dropdown` from my forked repo:
+- Install `mkdocs-rtd-dropdown` from a forked repo:
 
 ```sh
 git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git
