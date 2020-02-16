@@ -1,9 +1,9 @@
 site_name: VidarDB
 theme:
-    name: 'rtd-dropdown'
+    name: readthedocs
 repo_url: https://github.com/vidardb/docs
 site_author: VidarDB Team
 copyright: 2020 VidarDB Inc. All Rights Reserved.
 nav:
     - 'Welcome to VidarDB': 'index.md'
-    - 'Quick Start with Docker': 'quick_start_with_docker.md'
+    - 'Run Postgresql with VidarDB in Docker': 'run_postgresql_with_vidarDB_in_docker.md'
