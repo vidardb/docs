@@ -1,0 +1,26 @@
+dist: bionic
+os:
+  - linux
+language: python
+python:
+  - "3.7"
+
+addons:
+  apt:
+      packages: ['python3.7', 'python3-pip', 'git']
+
+install:
+  - pip3 install -r requirements.txt
+  - git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git && cd mkdocs-rtd-dropdown && python3 setup.py install && cd ..
+
+script:
+  - mkdocs build -v
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: false
+  verbose: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
