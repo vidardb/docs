@@ -1,8 +1,0 @@
-*.pyc
-build
-dist/
-mkdocs_basic_theme.egg-info/
-*.egg-info
-site/
-.env
-.vscode
