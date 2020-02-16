@@ -6,7 +6,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "master" ]; then e
 
 git config user.name "xingweitian"
 git config user.email "xingweitian@gmail.com"
-git remote add gh-token "https://${GH_TOKEN}@github.com/vidardb/docs.git";
+git remote add gh-token "https://${GITHUB_TOKEN}@github.com/vidardb/docs.git";
 git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
 mkdocs gh-deploy -v --clean --remote-name gh-token;
 
