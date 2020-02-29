@@ -7,3 +7,5 @@ copyright: 2020 VidarDB Inc. All Rights Reserved.
 nav:
     - 'Welcome to VidarDB': 'index.md'
     - 'Run VidarDB in Docker': 'run_vidarDB_in_docker.md'
+    - 'Frequently Asked Questions': 'faq.md'
+
