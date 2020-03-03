@@ -77,6 +77,8 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#how-is-vidardb-different-from-other-traditional-database-systems">How is VidarDB different from other traditional database systems?</a></li>
+        
             <li><a class="toctree-l3" href="#what-is-the-relationship-between-vidardb-and-postgresql">What is the relationship between VidarDB and Postgresql?</a></li>
         
         </ul>
@@ -121,6 +123,21 @@
             <div class="section">
               
                 <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+<h2 id="how-is-vidardb-different-from-other-traditional-database-systems">How is VidarDB different from other traditional database systems?</h2>
+<p>The core data structures in traditional database systems like B+ trees were invented in the 1970s. They are optimized for the old storage medium.  In contrast, VidarDB is designed for modern fast storage. </p>
+<p>VidarDB is based on the log-structured merge tree (LSM Tree) data structure that has the following advantages:</p>
+<ol>
+<li>
+<p>superior write performance: inserts and updates are only appended to the top level of the tree, so the LSM Tree requires only sequential writes and avoids random writes.</p>
+</li>
+<li>
+<p>eventual merge down the hierarchy: read performance and space utilization are improved while the cost of compaction and obsolete data cleaning is amortized.  </p>
+</li>
+<li>
+<p>a data structure of data structures: A LSM tree maintains data in two or more separate levels, each of which is optimized for its respective underlying storage medium. Each level can have its own data structure. The memory component can use a skip list or a B+ tree while the disk component can use a B+ tree or a sorted string table (SSTable).</p>
+</li>
+</ol>
+<p>VidarDB is the world’s first system that introduces the column store into the LSM-tree. This innovation brings an amazing speedup for analytical workloads.  The fundamental advantage in the core data structure makes VidarDB a powerful engine for business intelligence. In addtion, thanks to the MADlib library, VidarDB can support AI algorithms in SQL.</p>
 <h2 id="what-is-the-relationship-between-vidardb-and-postgresql">What is the relationship between VidarDB and Postgresql?</h2>
 <p>Postgresql is one of the most popular and advanced open source database systems. Currently VidarDB is used as a storage engine of Postgresql. Compared to the original Postgresql, VidarDB provides a significant improvement in performance. Meanwhile, VidarDB embraces the PostgreSQL ecosystem. All the client drivers, tools and other components in Postgresql like its outstanding parser and optimizer can be reused by VidarDB.</p>
               
