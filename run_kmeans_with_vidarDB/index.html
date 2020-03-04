@@ -139,13 +139,26 @@
 
 <p>This command will also create a new database called <code>chicago_taxi_trips</code>.</p>
 <p>Then, we create a new table <code>chicago_taxi_trips_change</code> for the data training:</p>
-<pre><code class="sql">-- connect to vidardb
+<pre><code class="sql">-- connect to the local vidardb
 psql -h 127.0.0.1 -p 5432 -U postgres
 
 -- connect to the database
 \c chicago_taxi_trips postgres;
 
 -- create new table
+drop table if exists chicago_taxi_trips_change;
+
+-- double precision array for (pickup_latitude,pickup_longitude)
+create table chicago_taxi_trips_change
+(
+    row_id serial,
+    taxi_id int,
+    pickup_latitude decimal(10, 2),
+    pickup_longitude decimal(10, 2),
+    row_vec double precision[]
+);
+
+-- insert data
 insert into chicago_taxi_trips_change (taxi_id,pickup_latitude,pickup_longitude, row_vec)
 select taxi_id,
        pickup_latitude,
@@ -156,8 +169,19 @@ from chicago_taxi_trips;
 
 <p>Now, the preparation job is done. Let's move to the training part.</p>
 <h2 id="data-training">Data Training</h2>
-<p>This section is very simple and straightforward. Try the following SQL commands to use KMeans algorithm to train the data:</p>
-<pre><code class="sql">DROP TABLE IF EXISTS km_result;
+<p>This section is very simple and straightforward. Before data training, we need to enable AI support in <code>chicago_taxi_trips</code> database:</p>
+<pre><code class="shell">docker exec -it vidardb sh -c &quot;install-madlib.sh -U postgres -D chicago_taxi_trips&quot;
+</code></pre>
+
+<p>Try the following SQL commands to use KMeans algorithm to train the data:</p>
+<pre><code class="sql">-- connect to the local vidardb
+psql -h 127.0.0.1 -p 5432 -U postgres
+
+-- connect to the database
+\c chicago_taxi_trips postgres;
+
+-- create new table
+DROP TABLE IF EXISTS km_result;
 
 -- Run kmeans algorithm
 CREATE TABLE km_result AS
