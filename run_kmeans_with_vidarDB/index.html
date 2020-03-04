@@ -134,7 +134,7 @@
 </code></pre>
 
 <p>Import Chicago Taxi Tips data (If you don't have psql client installed, install it beforing executing the following command):</p>
-<pre><code class="sh">cd ./util-notebook/kmeans/ &amp;&amp; psql -U postgres -W -f ./import-data_chicago_taxi_trips.sql
+<pre><code class="sh">cd ./util-notebook/kmeans/ &amp;&amp; psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-data_chicago_taxi_trips.sql
 </code></pre>
 
 <p>This command will also create a new database called <code>chicago_taxi_trips</code>.</p>
