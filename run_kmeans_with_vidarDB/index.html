@@ -183,7 +183,7 @@ psql -h 127.0.0.1 -p 5432 -U postgres
 -- create new table
 DROP TABLE IF EXISTS km_result;
 
--- Run kmeans algorithm
+-- run kmeans algorithm
 CREATE TABLE km_result AS
 SELECT * FROM madlib.kmeanspp(
     'chicago_taxi_trips_change',   -- Table of source data
