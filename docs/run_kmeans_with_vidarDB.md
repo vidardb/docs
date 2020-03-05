@@ -13,7 +13,7 @@ git clone https://github.com/vidardb/util.git && cd util
 Import Chicago Taxi Tips data (If you don't have psql client installed, install it beforing executing the following command):
 
 ```sh
-cd ./util-notebook/kmeans/ && psql -U postgres -W -f ./import-data_chicago_taxi_trips.sql
+cd ./util-notebook/kmeans/ && psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-data_chicago_taxi_trips.sql
 ```
 
 This command will also create a new database called `chicago_taxi_trips`.
@@ -21,24 +21,57 @@ This command will also create a new database called `chicago_taxi_trips`.
 Then, we create a new table `chicago_taxi_trips_change` for the data training:
 
 ```sql
+-- connect to the local vidardb
+psql -h 127.0.0.1 -p 5432 -U postgres
+
+-- connect to the database
+\c chicago_taxi_trips postgres;
+
+-- create new table
+drop table if exists chicago_taxi_trips_change;
+
+-- double precision array for (pickup_latitude,pickup_longitude)
+create table chicago_taxi_trips_change
+(
+    row_id serial,
+    taxi_id int,
+    pickup_latitude decimal(10, 2),
+    pickup_longitude decimal(10, 2),
+    row_vec double precision[]
+);
+
+-- insert data
 insert into chicago_taxi_trips_change (taxi_id,pickup_latitude,pickup_longitude, row_vec)
 select taxi_id,
        pickup_latitude,
        pickup_longitude,
        array_cat(array[pickup_latitude], array[pickup_longitude])
-from chicago_taxi_trips
+from chicago_taxi_trips;
 ```
 
 Now, the preparation job is done. Let's move to the training part.
 
 ## Data Training
 
-This section is very simple and straightforward. Try the following SQL commands to use KMeans algorithm to train the data:
+This section is very simple and straightforward. Before data training, we need to enable AI support in `chicago_taxi_trips` database:
+
+```shell
+docker exec -it vidardb sh -c "install-madlib.sh -U postgres -D chicago_taxi_trips"
+```
+
+Try the following SQL commands to use KMeans algorithm to train the data:
 
 ```sql
+-- connect to the local vidardb
+psql -h 127.0.0.1 -p 5432 -U postgres
+
+-- connect to the database
+\c chicago_taxi_trips postgres;
+
+-- create new table
 DROP TABLE IF EXISTS km_result;
 
--- Run kmeans algorithm
+-- run kmeans algorithm
 CREATE TABLE km_result AS
 SELECT * FROM madlib.kmeanspp(
     'chicago_taxi_trips_change',   -- Table of source data
