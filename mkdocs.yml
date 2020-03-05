@@ -6,7 +6,7 @@ site_author: VidarDB Team
 copyright: 2020 VidarDB Inc. All Rights Reserved.
 nav:
     - 'Welcome to VidarDB': 'index.md'
-    - 'What is vidarDB': 'what_it_vidarDB.md'
+    - 'What is vidarDB': 'what_is_vidarDB.md'
     - 'Run VidarDB in Docker': 'run_vidarDB_in_docker.md'
     - 'VidarDB Examples': 'example.md'
     - 'Run KMeans with VidarDB': 'run_kmeans_with_vidarDB.md'
