@@ -27,7 +27,7 @@ INSERT INTO student VALUES('Jones', '20767234');
 INSERT INTO student VALUES('Heisenberg', '20777345');
 ```
 
-In the next step, use `SELECT` statment to query students' information:
+In the next step, use `SELECT` statement to query students' information:
 
 ```sql
 example=# SELECT * FROM student;
@@ -39,10 +39,10 @@ example=# SELECT * FROM student;
 (3 rows)
 ```
 
-Also have a try at `DELETE` statment:
+Also have a try at `DELETE` statement:
 
 ```sql
-example=# DELETE FROM student WHERE NAME='Jones';
+example=# DELETE FROM student WHERE name='Jones';
 DELETE 1
 
 example=# SELECT * FROM student;
@@ -56,7 +56,7 @@ example=# SELECT * FROM student;
 And update Rafferty's student id to `20757321`:
 
 ```sql
-example=# UPDATE student SET ID='20757321' WHERE NAME='Rafferty';
+example=# UPDATE student SET ID='20757321' WHERE name='Rafferty';
 UPDATE 1
 
 example=# SELECT * FROM student;
@@ -69,10 +69,10 @@ example=# SELECT * FROM student;
 
 ## Interaction with PostgreSQL
 
-VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's data engine and add one row into it:
+VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's storage engine and add one row into it:
 
 ```sql
-CREATE TABLE student_course(ID TEXT, COURSE TEXT);
+CREATE TABLE student_course(ID TEXT, course TEXT);
 INSERT INTO student_course VALUES('20757321', 'Computer Science');
 ```
 
@@ -89,7 +89,7 @@ example=# SELECT * FROM student_course;
 Let's try with the `JOIN` statement with the table `student` (created by VidarDB engine) and `student_course` (created by PostgreSQL engine):
 
 ```sql
-example=# SELECT student.name FROM student INNER JOIN student_course ON student.id = student_course.id;
+example=# SELECT student.name FROM student, student_course WHERE student.id = student_course.id;
    name   
 ----------
  Rafferty
