@@ -132,17 +132,21 @@
             <div class="section">
               
                 <h1 id="run-kmeans-with-vidardb">Run KMeans with VidarDB</h1>
-<p>VidarDB has a native support to <a href="https://madlib.apache.org/index.html">MADlib</a>, which allowed you to perfrom many commonly used algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm provided by <a href="https://madlib.apache.org/index.html">MADlib</a> to train your data in VidarDB. It assumes you already have VidarDB installed. If you do not, head over to the <a href="./run_vidarDB_in_docker.md">Run VidarDB in Docker</a> section.</p>
+<p>VidarDB natively supports AI, which is built on <a href="https://madlib.apache.org/index.html">MADlib</a> which allowing you to perfrom many commonly-used AI algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm provided by <a href="https://madlib.apache.org/index.html">MADlib</a> to train your data in VidarDB. It assumes you already have VidarDB installed. If you do not, head over to the <a href="../run_vidarDB_with_docker/">Run VidarDB with Docker</a> section.</p>
 <h2 id="preparation">Preparation</h2>
+<p>Make sure you have already installed <code>psql</code> on your computer. If not, for Debian users:  </p>
+<pre><code class="bash">sudo apt-get install postgresql-client
+</code></pre>
+
 <p>Clone and go into the VidarDB's util repository:</p>
 <pre><code class="sh">git clone https://github.com/vidardb/util.git &amp;&amp; cd util
 </code></pre>
 
-<p>Import Chicago Taxi Tips data (If you don't have psql client installed, install it beforing executing the following command):</p>
+<p>Import Chicago Taxi Trips data:</p>
 <pre><code class="sh">cd ./util-notebook/kmeans/ &amp;&amp; psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-data_chicago_taxi_trips.sql
 </code></pre>
 
-<p>This command will also create a new database called <code>chicago_taxi_trips</code>.</p>
+<p>This will also create a new database called <code>chicago_taxi_trips</code>.</p>
 <p>Then, we create a new table <code>chicago_taxi_trips_change</code> for the data training:</p>
 <pre><code class="sql">-- connect to the local vidardb
 psql -h 127.0.0.1 -p 5432 -U postgres
@@ -151,25 +155,25 @@ psql -h 127.0.0.1 -p 5432 -U postgres
 \c chicago_taxi_trips postgres;
 
 -- create new table
-drop table if exists chicago_taxi_trips_change;
+DROP TABLE IF EXISTS chicago_taxi_trips_change;
 
 -- double precision array for (pickup_latitude,pickup_longitude)
-create table chicago_taxi_trips_change
+CREATE TABLE chicago_taxi_trips_change
 (
-    row_id serial,
-    taxi_id int,
-    pickup_latitude decimal(10, 2),
-    pickup_longitude decimal(10, 2),
-    row_vec double precision[]
+    row_id SERIAL,
+    taxi_id INT,
+    pickup_latitude DECIMAL(10, 2),
+    pickup_longitude DECIMAL(10, 2),
+    row_vec DOUBLE PRECISION[]
 );
 
 -- insert data
-insert into chicago_taxi_trips_change (taxi_id,pickup_latitude,pickup_longitude, row_vec)
-select taxi_id,
+INSERT INTO chicago_taxi_trips_change (taxi_id,pickup_latitude,pickup_longitude, row_vec)
+SELECT taxi_id,
        pickup_latitude,
        pickup_longitude,
        array_cat(array[pickup_latitude], array[pickup_longitude])
-from chicago_taxi_trips;
+FROM chicago_taxi_trips;
 </code></pre>
 
 <p>Now, the preparation job is done. Let's move to the training part.</p>
