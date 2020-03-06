@@ -1,17 +1,17 @@
 # VidarDB Examples
 
-In this section, we are going to show some VidarDB fundamental commands and basic interactions with Postgresql.
+In this section, we are going to show some basic VidarDB commands and simple interactions with PostgreSQL.
 
-## Fundamental Commands
+## Basic Commands
 
-To create a database `example` and change to use it:
+To create a database `example` and switch to it:
 
 ```sql
 CREATE DATABASE example;
 \c example;
 ```
 
-Create a new table `student` using VidarDB's data engine:
+Create a new table `student` using VidarDB's data engine. Claiming `EXTENSION` and `SERVER` are needed to trigger VidarDB's engine:
 
 ```sql
 CREATE EXTENSION kv_fdw;
@@ -19,7 +19,7 @@ CREATE SERVER kv_server FOREIGN DATA WRAPPER kv_fdw;
 CREATE FOREIGN TABLE student(name TEXT, ID TEXT) SERVER kv_server;
 ```
 
-Let's try to insert some fresh data into our new table:
+Let's try to insert some sample data into our new table:
 
 ```sql
 INSERT INTO student VALUES('Rafferty', '20757123');
@@ -67,9 +67,9 @@ example=# SELECT * FROM student;
 (2 rows)
 ```
 
-## Interaction with Postgresql
+## Interaction with PostgreSQL
 
-VidarDB works well with the original Postgresql. Now, we will create another new table using Postgresql's data engine and add one row into it:
+VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's data engine and add one row into it:
 
 ```sql
 CREATE TABLE student_course(ID TEXT, COURSE TEXT);
@@ -86,7 +86,7 @@ example=# SELECT * FROM student_course;
 (1 row)
 ```
 
-Let's try with the `INNER JOIN` with the table `student` (created using VidarDB) and `student_course` (created by Postgresql):
+Let's try with the `JOIN` statement with the table `student` (created by VidarDB engine) and `student_course` (created by PostgreSQL engine):
 
 ```sql
 example=# SELECT student.name FROM student INNER JOIN student_course ON student.id = student_course.id;
