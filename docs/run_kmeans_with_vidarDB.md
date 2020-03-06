@@ -34,25 +34,25 @@ psql -h 127.0.0.1 -p 5432 -U postgres
 \c chicago_taxi_trips postgres;
 
 -- create new table
-drop table if exists chicago_taxi_trips_change;
+DROP TABLE IF EXISTS chicago_taxi_trips_change;
 
 -- double precision array for (pickup_latitude,pickup_longitude)
-create table chicago_taxi_trips_change
+CREATE TABLE chicago_taxi_trips_change
 (
-    row_id serial,
-    taxi_id int,
-    pickup_latitude decimal(10, 2),
-    pickup_longitude decimal(10, 2),
-    row_vec double precision[]
+    row_id SERIAL,
+    taxi_id INT,
+    pickup_latitude DECIMAL(10, 2),
+    pickup_longitude DECIMAL(10, 2),
+    row_vec DOUBLE PRECISION[]
 );
 
 -- insert data
-insert into chicago_taxi_trips_change (taxi_id,pickup_latitude,pickup_longitude, row_vec)
-select taxi_id,
+INSERT INTO chicago_taxi_trips_change (taxi_id,pickup_latitude,pickup_longitude, row_vec)
+SELECT taxi_id,
        pickup_latitude,
        pickup_longitude,
        array_cat(array[pickup_latitude], array[pickup_longitude])
-from chicago_taxi_trips;
+FROM chicago_taxi_trips;
 ```
 
 Now, the preparation job is done. Let's move to the training part.
