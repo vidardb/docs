@@ -1,10 +1,10 @@
 # Run KMeans with VidarDB
 
-VidarDB natively supports AI, which is built on [MADlib](https://madlib.apache.org/index.html) which allowing you to perfrom many commonly-used AI algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm provided by [MADlib](https://madlib.apache.org/index.html) to train your data in VidarDB. It assumes you already have VidarDB installed. If you do not, head over to the [Run VidarDB with Docker](./run_vidarDB_with_docker.md) section.
+VidarDB natively supports AI, which is built on [MADlib](https://madlib.apache.org/index.html) allowing you to perfrom various commonly-used AI algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm to train data in VidarDB. It assumes VidarDB is already installed. If not, please head over to the [Run VidarDB with Docker](./run_vidarDB_with_docker.md) section.
 
 ## Preparation
 
-Make sure you have already installed `psql` on your computer. If not, for Debian users:  
+Make sure `psql` is installed on your computer. If not, for Debian users:  
 
 ```bash
 sudo apt-get install postgresql-client
@@ -24,7 +24,7 @@ cd ./util-notebook/kmeans/ && psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-
 
 This will also create a new database called `chicago_taxi_trips`.
 
-Then, we create a new table `chicago_taxi_trips_change` for the data training:
+Then, create a new table `chicago_taxi_trips_change` for the data training:
 
 ```sql
 -- connect to the local vidardb
@@ -55,17 +55,17 @@ SELECT taxi_id,
 FROM chicago_taxi_trips;
 ```
 
-Now, the preparation job is done. Let's move to the training part.
+Now, the preparation is done. Let's move to the training part.
 
 ## Data Training
 
-This section is very simple and straightforward. Before data training, we need to enable AI support in `chicago_taxi_trips` database:
+This section is very simple and straightforward. Before training data, we need to enable AI support in `chicago_taxi_trips` database:
 
 ```shell
 docker exec -it vidardb sh -c "install-madlib.sh -U postgres -D chicago_taxi_trips"
 ```
 
-Try the following SQL commands to use KMeans algorithm to train the data:
+Try the following SQL commands to train data with KMeans:
 
 ```sql
 -- connect to the local vidardb
@@ -92,7 +92,7 @@ SELECT * FROM madlib.kmeanspp(
 
 ## Perform Clustering Predictions
 
-Use the model we trained to predict the cluster_id of each trip:
+Predict the cluster_id of each trip with the model we have just trained:
 
 ```sql
 SELECT trips_data.*, (madlib.closest_column(centroids, row_vec)).column_id AS cluster_id
@@ -100,7 +100,7 @@ SELECT trips_data.*, (madlib.closest_column(centroids, row_vec)).column_id AS cl
     ORDER BY trips_data.row_id DESC LIMIT 10;
 ```
 
-We get some results like this:
+We can get some results like this:
 
 ```
  row_id | taxi_id | pickup_latitude | pickup_longitude |           row_vec            | cluster_id 
@@ -120,3 +120,5 @@ We get some results like this:
 ## Reference
 
 The data this example used come from [Taxi Trips | City of Chicago | Data Portal](https://data.cityofchicago.org/Transportation/Taxi-Trips/wrvz-psew).
+
+(More examples will come soon!)
