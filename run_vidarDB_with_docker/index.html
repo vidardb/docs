@@ -8,7 +8,7 @@
   
   <meta name="author" content="VidarDB Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Run VidarDB in Docker - VidarDB</title>
+  <title>Run VidarDB with Docker - VidarDB</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Run VidarDB in Docker";
-    var mkdocs_page_input_path = "run_vidarDB_in_docker.md";
+    var mkdocs_page_name = "Run VidarDB with Docker";
+    var mkdocs_page_input_path = "run_vidarDB_with_docker.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -60,10 +60,10 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Run VidarDB in Docker</a>
+    <a class="current" href="./">Run VidarDB with Docker</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#run-vidardb-in-docker">Run VidarDB in Docker</a></li>
+    <li class="toctree-l2"><a href="#run-vidardb-with-docker">Run VidarDB with Docker</a></li>
     
         <ul>
         
@@ -120,10 +120,10 @@
     
       
     
-    <li>Run VidarDB in Docker</li>
+    <li>Run VidarDB with Docker</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vidardb/docs/edit/master/docs/run_vidarDB_in_docker.md"
+        <a href="https://github.com/vidardb/docs/edit/master/docs/run_vidarDB_with_docker.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -133,12 +133,10 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="run-vidardb-in-docker">Run VidarDB in Docker</h1>
-<p>We can easily deploy VidarDB in a Docker container. The following document will guide you to install and play with VidarDB in one minute.</p>
+                <h1 id="run-vidardb-with-docker">Run VidarDB with Docker</h1>
+<p>We can easily deploy VidarDB with Docker. The following document will guide you to install and play with VidarDB in one minute.</p>
 <h2 id="requirement">Requirement</h2>
-<ul>
-<li>Docker is the only requirement. Install it at <a href="https://docs.docker.com/install/">https://docs.docker.com/install/</a> .</li>
-</ul>
+<p>Docker is the only requirement. Install it at <a href="https://docs.docker.com/install/">https://docs.docker.com/install/</a> .</p>
 <h2 id="run-a-vidardbs-docker-container">Run a VidarDB's Docker container</h2>
 <p><em>Before running any of the following commands, please ensure that both the container name <code>vidardb</code> and the port <code>5432</code> have not been used in your environment.</em></p>
 <p>To run a VidarDB's Docker container:</p>
@@ -155,7 +153,6 @@
 <pre><code class="sh">psql -h 127.0.0.1 -p 5432 -U postgres
 </code></pre>
 
-<p>Then we can connect to the VidarDB successfully (retry the connecting command again).</p>
 <h2 id="build-your-own-docker-image">Build your own Docker image</h2>
 <p>You may want to create your custom Docker image. Do it by '1-click' in the root directory of <code>vidardb</code> repository:</p>
 <pre><code class="sh"># Build a Docker image with the default name 'vidardb/vidardb:latest'
