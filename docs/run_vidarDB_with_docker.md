@@ -1,6 +1,6 @@
 # Run VidarDB with Docker
 
-We can easily deploy VidarDB with Docker. The following document will guide you to install and play with VidarDB in one minute.
+We can easily deploy VidarDB with Docker. This section will guide you to install and play with VidarDB in one minute.
 
 ## Requirement
 
