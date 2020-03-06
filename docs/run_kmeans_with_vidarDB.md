@@ -1,8 +1,14 @@
 # Run KMeans with VidarDB
 
-VidarDB has a native support to [MADlib](https://madlib.apache.org/index.html), which allowed you to perfrom many commonly used algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm provided by [MADlib](https://madlib.apache.org/index.html) to train your data in VidarDB. It assumes you already have VidarDB installed. If you do not, head over to the [Run VidarDB in Docker](./run_vidarDB_in_docker.md) section.
+VidarDB natively supports AI, which is built on [MADlib](https://madlib.apache.org/index.html) which allowing you to perfrom many commonly-used AI algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm provided by [MADlib](https://madlib.apache.org/index.html) to train your data in VidarDB. It assumes you already have VidarDB installed. If you do not, head over to the [Run VidarDB with Docker](./run_vidarDB_with_docker.md) section.
 
 ## Preparation
+
+Make sure you have already installed `psql` on your computer. If not, for Debian users:  
+
+```bash
+sudo apt-get install postgresql-client
+```
 
 Clone and go into the VidarDB's util repository:
 
@@ -10,13 +16,13 @@ Clone and go into the VidarDB's util repository:
 git clone https://github.com/vidardb/util.git && cd util
 ```
 
-Import Chicago Taxi Tips data (If you don't have psql client installed, install it beforing executing the following command):
+Import Chicago Taxi Trips data:
 
 ```sh
 cd ./util-notebook/kmeans/ && psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-data_chicago_taxi_trips.sql
 ```
 
-This command will also create a new database called `chicago_taxi_trips`.
+This will also create a new database called `chicago_taxi_trips`.
 
 Then, we create a new table `chicago_taxi_trips_change` for the data training:
 
