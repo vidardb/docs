@@ -11,7 +11,7 @@ Typically, companies have to install two groups of tools: one optimized for inte
 VidarDB is the unified database system that eliminates the need for installing and maintaining multiple data processing tools, which significantly reduces companies' software costs and human capital, and at the same time it enables the real-time reporting.
 
 ## Core Tech
-Unlike any other database that almost relies on the data structure designed in the 1970s, VidarDB is built on a new data structure we designed for modern memory architecture, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. Additionally, it is a versatile data structure, which will adapt to and optimize for different workloads, such as operational, data analysis, streaming and even mixed of them. Then, we have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
+Unlike any other database that almost relies on the data structure designed in the 1970s, VidarDB is built on a new data structure we designed for modern memory hierarchy, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. Additionally, it is a versatile data structure, which will adapt to and optimize for different workloads, such as operational, data analysis, streaming and even mixed of them. Then, we have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
 
 <img src="../img/vidardb_arch.png" alt="drawing" width="60%" height="60%" style="display: block; margin-left: auto; margin-right: auto;"/>
 
