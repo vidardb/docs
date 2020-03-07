@@ -22,7 +22,7 @@ VidarDB is written in C++, and natively runs on Linux systems. Other operating s
 
 ## What client driver can I use to work with VidarDB?
 
-VidarDB reuses the frontend of PostgreSQL, so the client drivers for PostgreSQL can also work with VidarDB without code change. Languages such as Java, C++, Python and C#/.Net are all supported.
+VidarDB reuses the frontend of PostgreSQL, so the client drivers for PostgreSQL can also work with VidarDB without code change. Languages such as Java, C++, Python, Go and C#/.Net are all supported.
 
 
 ## Does VidarDB support SQL?
