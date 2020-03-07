@@ -13,6 +13,6 @@ VidarDB is the unified database system that eliminates the need for installing a
 ## Core Tech
 Unlike any other database that almost relies on the data structure designed in the 1970s, VidarDB is built on a new data structure we designed for modern memory architecture, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. Additionally, it is a versatile data structure, which will adapt to and optimize for different workloads, such as operational, data analysis, streaming and even mixed of them. Then, we have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
 
-![VidarDB architecture](img/vidardb_arch.png)
+<img src="../img/vidardb_arch.png" alt="drawing" width="80%" height="80%" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 VidarDB has a novel storage engine built on our designed data structure, and an additional layer to support machine learning. At the same time, it utilizes many PostgreSQL components such as parser and optimizer, and with the same interface.
