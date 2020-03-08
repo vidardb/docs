@@ -2,7 +2,7 @@
 
 ## How is VidarDB different from other database systems?
 
-There are several fundamental differences. First, unlike most database systems relying on the data structure designed in the 1970s, VidarDB employs a new data structure designed for modern memory architecture, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. Additionally, it is a versatile data structure, which will adapt to and optimize for different workloads, such as operational, data analysis, streaming and even mixed of them. Then, we have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
+There are several fundamental differences. First, unlike most database systems relying on the data structure designed in the 1970s, VidarDB employs a new data structure designed for modern memory hierarchy, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. Additionally, it is a versatile data structure, which will adapt to and optimize for different workloads, such as operational, data analysis, streaming and even mixed of them. Then, we have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
 
 
 ## What is the relationship between VidarDB and PostgreSQL?
@@ -22,7 +22,7 @@ VidarDB is written in C++, and natively runs on Linux systems. Other operating s
 
 ## What client driver can I use to work with VidarDB?
 
-VidarDB reuses the frontend of PostgreSQL, so the client drivers for PostgreSQL can also work with VidarDB without code change. Languages such as Java, C++, Python and C#/.Net are all supported.
+VidarDB reuses the frontend of PostgreSQL, so the client drivers for PostgreSQL can also work with VidarDB without code change. Languages such as Java, C++, Python, Go and C#/.Net are all supported.
 
 
 ## Does VidarDB support SQL?
