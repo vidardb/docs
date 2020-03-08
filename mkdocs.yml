@@ -1,6 +1,6 @@
 site_name: VidarDB
 theme:
-    name: readthedocs
+    name: 'rtd-dropdown'
 repo_url: https://github.com/vidardb/docs
 site_author: VidarDB Team
 copyright: 2020 VidarDB Inc. All Rights Reserved.
