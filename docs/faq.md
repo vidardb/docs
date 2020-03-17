@@ -2,17 +2,23 @@
 
 ## How is VidarDB different from other database systems?
 
-There are several fundamental differences. First, unlike most database systems relying on the data structure designed in the 1970s, VidarDB employs a new data structure designed for modern memory hierarchy, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. Additionally, it is a versatile data structure, which will adapt to and optimize for different workloads, such as operational, data analysis, streaming and even mixed of them. Then, we have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
+There are several fundamental differences. 
+
+* Unlike most database systems relying on the data structure designed in the 1970s, VidarDB has designed a new data structure, which is a versatile data structure adaptive to and optimized for different workloads, such as operational, data analysis, streaming and even mixed of them. 
+
+* The data structure is designed for modern memory hierarchy, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. 
+
+* We have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
 
 
 ## What is the relationship between VidarDB and PostgreSQL?
 
-VidarDB utilizes the frontend of PostgreSQL, including its parser and optimizer, but replaces storage engine of PostgreSQL with a novel database engine based on a revolutionary data structure. Currently, we keep both storage engines coexisted. Thus, you can join two tables created from different engines. Once VidarDB’s storage engine is mature, we will remove the engine of PostgreSQL. Meanwhile, VidarDB embraces the PostgreSQL ecosystem, meaning all the client drivers, tools and other components of PostgreSQL can be utilized in VidarDB directly without changing the code.
+VidarDB utilizes the frontend of PostgreSQL, including its parser and optimizer, but replaces storage engine of PostgreSQL with a novel database engine based on a revolutionary data structure we designed. Currently, we keep both storage engines coexisted. Thus, you can join two tables created from different engines. Once VidarDB’s storage engine is mature, we will remove the engine of PostgreSQL. Meanwhile, VidarDB embraces the PostgreSQL ecosystem, meaning all the client drivers, tools and other components of PostgreSQL can be utilized in VidarDB directly without changing the code.
 
 
 ## Is VidarDB stable enough to use?
 
-The idea and design of VidarDB are groundbreaking, but we do not develop VidarDB from scratch. Instead, the storage engine of VidarDB is built on a mature key-value store, RocksDB, where VidarDB seamlessly infuses the design and idea into the core data structure of RocksDB, and keeps the quality of code. Additionally, VidarDB effectively utilizes the frontend of PostgreSQL, a popular database system, resulting in a familiar interface to users.
+The idea and design of VidarDB are groundbreaking, but we do not develop VidarDB from scratch. Instead, the storage engine of VidarDB leverages the existing code of a mature key-value store, RocksDB, where VidarDB seamlessly infuses the design and idea into it, and keeps the quality of code by utilizing the code as much as possible. Additionally, VidarDB effectively utilizes the frontend of PostgreSQL, a popular database system, resulting in a familiar interface to users.
 
 
 ## What are the system requirements for VidarDB?
