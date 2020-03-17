@@ -6,7 +6,7 @@ There are several fundamental differences.
 
 * Unlike most database systems relying on the data structure designed in the 1970s, VidarDB has designed a new data structure, which is a versatile data structure adaptive to and optimized for different workloads, such as operational, data analysis, streaming and even mixed of them. 
 
-* The data structure is designed for modern memory hierarchy, efficiently supporting RAM, NVM, SSD, Disk as well as smooth data flow among these storage tiers. 
+* The data structure is designed for modern memory hierarchy, efficiently leveraging RAM, NVM, SSD, Disk as well as supporting smooth data flow among these storage tiers. 
 
 * We have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
 
@@ -18,7 +18,7 @@ VidarDB utilizes the frontend of PostgreSQL, including its parser and optimizer,
 
 ## Is VidarDB stable enough to use?
 
-The idea and design of VidarDB are groundbreaking, but we do not develop VidarDB from scratch. Instead, the storage engine of VidarDB leverages the existing code of a mature key-value store, RocksDB, where VidarDB seamlessly infuses the design and idea into it, and keeps the quality of code by utilizing the code as much as possible. Additionally, VidarDB effectively utilizes the frontend of PostgreSQL, a popular database system, resulting in a familiar interface to users.
+The idea and design of VidarDB are groundbreaking, but we do not develop VidarDB from scratch. Instead, the storage engine of VidarDB leverages the existing code of a mature key-value store, RocksDB, where VidarDB seamlessly infuses the design and idea into it, and keeps the quality of code by utilizing its code as much as possible. Additionally, VidarDB effectively utilizes the frontend of PostgreSQL, a popular database system, resulting in a familiar interface to users.
 
 
 ## What are the system requirements for VidarDB?
