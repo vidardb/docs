@@ -18,7 +18,7 @@ VidarDB utilizes the frontend of PostgreSQL, including its parser and optimizer,
 
 ## Is VidarDB stable enough to use?
 
-The idea and design of VidarDB are groundbreaking, but we do not develop VidarDB from scratch. Instead, the storage engine of VidarDB leverages the existing code of a mature key-value store, RocksDB, where VidarDB seamlessly infuses the design and idea into it, and keeps the quality of code by utilizing its code as much as possible. Additionally, VidarDB effectively utilizes the frontend of PostgreSQL, a popular database system, resulting in a familiar interface to users.
+The idea and design of VidarDB are groundbreaking, but we do not develop VidarDB from scratch. Instead, the storage engine of VidarDB leverages the existing mature key-value store, RocksDB, where VidarDB seamlessly infuses the design and idea into it, and keeps the quality of our code by utilizing RocksDB code as much as possible. Additionally, VidarDB effectively utilizes the frontend of PostgreSQL, a popular database system, giving rise to a familiar interface to users.
 
 
 ## What are the system requirements for VidarDB?
