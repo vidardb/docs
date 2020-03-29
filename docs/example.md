@@ -22,9 +22,9 @@ CREATE FOREIGN TABLE student(id INTEGER, name TEXT) SERVER kv_server;
 Let's try to insert some sample data into our new table:
 
 ```sql
-INSERT INTO student VALUES('20757123', 'Rafferty');
-INSERT INTO student VALUES('20767234', 'Jones');
-INSERT INTO student VALUES('20777345', 'Heisenberg');
+INSERT INTO student VALUES(20757123, 'Rafferty');
+INSERT INTO student VALUES(20767234, 'Jones');
+INSERT INTO student VALUES(20777345, 'Heisenberg');
 ```
 
 In the next step, use `SELECT` statement to query students' information:
@@ -73,7 +73,7 @@ VidarDB works seamlessily with the original PostgreSQL. Now, we will create anot
 
 ```sql
 CREATE TABLE student_course(id INTEGER, course TEXT);
-INSERT INTO student_course VALUES('20757123', 'Computer Science');
+INSERT INTO student_course VALUES(20757123, 'Computer Science');
 ```
 
 We currently have something like:
