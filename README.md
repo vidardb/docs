@@ -1,6 +1,6 @@
 # VidarDB Documentation
 
-[![Build Status](https://travis-ci.org/vidardb/docs.svg?branch=master)](https://travis-ci.org/vidardb/docs)
+[![Build Status](https://travis-ci.com/vidardb/docs.svg?branch=master)](https://travis-ci.com/github/vidardb/docs)
 
 ## Requirement
 
