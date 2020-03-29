@@ -16,26 +16,26 @@ Create a new table `student` using VidarDB's data engine. Claiming `EXTENSION` a
 ```sql
 CREATE EXTENSION kv_fdw;
 CREATE SERVER kv_server FOREIGN DATA WRAPPER kv_fdw;
-CREATE FOREIGN TABLE student(name TEXT, ID TEXT) SERVER kv_server;
+CREATE FOREIGN TABLE student(id INTEGER, name TEXT) SERVER kv_server;
 ```
 
 Let's try to insert some sample data into our new table:
 
 ```sql
-INSERT INTO student VALUES('Rafferty', '20757123');
-INSERT INTO student VALUES('Jones', '20767234');
-INSERT INTO student VALUES('Heisenberg', '20777345');
+INSERT INTO student VALUES(20757123, 'Rafferty');
+INSERT INTO student VALUES(20767234, 'Jones');
+INSERT INTO student VALUES(20777345, 'Heisenberg');
 ```
 
 In the next step, use `SELECT` statement to query students' information:
 
 ```sql
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Jones      | 20767234
- Rafferty   | 20757123
- Heisenberg | 20777345
+    id    |    name    
+----------+------------
+ 20767234 | Jones
+ 20777345 | Heisenberg
+ 20757123 | Rafferty
 (3 rows)
 ```
 
@@ -46,24 +46,24 @@ example=# DELETE FROM student WHERE name='Jones';
 DELETE 1
 
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Rafferty   | 20757123
- Heisenberg | 20777345
+    id    |    name    
+----------+------------
+ 20777345 | Heisenberg
+ 20757123 | Rafferty
 (2 rows)
 ```
 
-And update Rafferty's student id to `20757321`:
+And update 20777345's student name to `Tom`:
 
 ```sql
-example=# UPDATE student SET ID='20757321' WHERE name='Rafferty';
+example=# UPDATE student SET name='Tom' WHERE id=20777345;
 UPDATE 1
 
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Rafferty   | 20757321
- Heisenberg | 20777345
+    id    |   name   
+----------+----------
+ 20777345 | Tom
+ 20757123 | Rafferty
 (2 rows)
 ```
 
@@ -72,8 +72,8 @@ example=# SELECT * FROM student;
 VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's storage engine and add one row into it:
 
 ```sql
-CREATE TABLE student_course(ID TEXT, course TEXT);
-INSERT INTO student_course VALUES('20757321', 'Computer Science');
+CREATE TABLE student_course(id INTEGER, course TEXT);
+INSERT INTO student_course VALUES(20757123, 'Computer Science');
 ```
 
 We currently have something like:
@@ -82,7 +82,7 @@ We currently have something like:
 example=# SELECT * FROM student_course;
     id    |      course      
 ----------+------------------
- 20757321 | Computer Science
+ 20757123 | Computer Science
 (1 row)
 ```
 
