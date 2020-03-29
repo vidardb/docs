@@ -16,26 +16,26 @@ Create a new table `student` using VidarDB's data engine. Claiming `EXTENSION` a
 ```sql
 CREATE EXTENSION kv_fdw;
 CREATE SERVER kv_server FOREIGN DATA WRAPPER kv_fdw;
-CREATE FOREIGN TABLE student(name TEXT, ID TEXT) SERVER kv_server;
+CREATE FOREIGN TABLE student(id INTEGER, name TEXT) SERVER kv_server;
 ```
 
 Let's try to insert some sample data into our new table:
 
 ```sql
-INSERT INTO student VALUES('Rafferty', '20757123');
-INSERT INTO student VALUES('Jones', '20767234');
-INSERT INTO student VALUES('Heisenberg', '20777345');
+INSERT INTO student VALUES('20757123', 'Rafferty');
+INSERT INTO student VALUES('20767234', 'Jones');
+INSERT INTO student VALUES('20777345', 'Heisenberg');
 ```
 
 In the next step, use `SELECT` statement to query students' information:
 
 ```sql
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Jones      | 20767234
- Rafferty   | 20757123
- Heisenberg | 20777345
+    id    |    name    
+----------+------------
+ 20767234 | Jones
+ 20777345 | Heisenberg
+ 20757123 | Rafferty
 (3 rows)
 ```
 
@@ -48,12 +48,12 @@ DELETE 1
 example=# SELECT * FROM student;
     name    |    id    
 ------------+----------
- Rafferty   | 20757123
- Heisenberg | 20777345
+ 20777345 | Heisenberg
+ 20757123 | Rafferty
 (2 rows)
 ```
 
-And update Rafferty's student id to `20757321`:
+And update 20757321's student name to `TOM`:
 
 ```sql
 example=# UPDATE student SET ID='20757321' WHERE name='Rafferty';
