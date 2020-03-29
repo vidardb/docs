@@ -53,10 +53,10 @@ example=# SELECT * FROM student;
 (2 rows)
 ```
 
-And update 20757345's student name to `Tom`:
+And update 20777345's student name to `Tom`:
 
 ```sql
-example=# UPDATE student SET name='Tom' WHERE id=20757345;
+example=# UPDATE student SET name='Tom' WHERE id=20777345;
 UPDATE 1
 
 example=# SELECT * FROM student;
@@ -72,8 +72,8 @@ example=# SELECT * FROM student;
 VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's storage engine and add one row into it:
 
 ```sql
-CREATE TABLE student_course(ID TEXT, course TEXT);
-INSERT INTO student_course VALUES('20757321', 'Computer Science');
+CREATE TABLE student_course(id INTEGER, course TEXT);
+INSERT INTO student_course VALUES('20757123', 'Computer Science');
 ```
 
 We currently have something like:
@@ -82,7 +82,7 @@ We currently have something like:
 example=# SELECT * FROM student_course;
     id    |      course      
 ----------+------------------
- 20757321 | Computer Science
+ 20757123 | Computer Science
 (1 row)
 ```
 
