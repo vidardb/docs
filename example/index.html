@@ -168,22 +168,22 @@
 <p>Create a new table <code>student</code> using VidarDB's data engine. Claiming <code>EXTENSION</code> and <code>SERVER</code> are needed to trigger VidarDB's engine:</p>
 <pre><code class="sql">CREATE EXTENSION kv_fdw;
 CREATE SERVER kv_server FOREIGN DATA WRAPPER kv_fdw;
-CREATE FOREIGN TABLE student(name TEXT, ID TEXT) SERVER kv_server;
+CREATE FOREIGN TABLE student(id INTEGER, name TEXT) SERVER kv_server;
 </code></pre>
 
 <p>Let's try to insert some sample data into our new table:</p>
-<pre><code class="sql">INSERT INTO student VALUES('Rafferty', '20757123');
-INSERT INTO student VALUES('Jones', '20767234');
-INSERT INTO student VALUES('Heisenberg', '20777345');
+<pre><code class="sql">INSERT INTO student VALUES(20757123, 'Rafferty');
+INSERT INTO student VALUES(20767234, 'Jones');
+INSERT INTO student VALUES(20777345, 'Heisenberg');
 </code></pre>
 
 <p>In the next step, use <code>SELECT</code> statement to query students' information:</p>
 <pre><code class="sql">example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Jones      | 20767234
- Rafferty   | 20757123
- Heisenberg | 20777345
+    id    |    name    
+----------+------------
+ 20767234 | Jones
+ 20777345 | Heisenberg
+ 20757123 | Rafferty
 (3 rows)
 </code></pre>
 
@@ -192,36 +192,36 @@ INSERT INTO student VALUES('Heisenberg', '20777345');
 DELETE 1
 
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Rafferty   | 20757123
- Heisenberg | 20777345
+    id    |    name    
+----------+------------
+ 20777345 | Heisenberg
+ 20757123 | Rafferty
 (2 rows)
 </code></pre>
 
-<p>And update Rafferty's student id to <code>20757321</code>:</p>
-<pre><code class="sql">example=# UPDATE student SET ID='20757321' WHERE name='Rafferty';
+<p>And update 20777345's student name to <code>Tom</code>:</p>
+<pre><code class="sql">example=# UPDATE student SET name='Tom' WHERE id=20777345;
 UPDATE 1
 
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Rafferty   | 20757321
- Heisenberg | 20777345
+    id    |   name   
+----------+----------
+ 20777345 | Tom
+ 20757123 | Rafferty
 (2 rows)
 </code></pre>
 
 <h2 id="interaction-with-postgresql">Interaction with PostgreSQL</h2>
 <p>VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's storage engine and add one row into it:</p>
-<pre><code class="sql">CREATE TABLE student_course(ID TEXT, course TEXT);
-INSERT INTO student_course VALUES('20757321', 'Computer Science');
+<pre><code class="sql">CREATE TABLE student_course(id INTEGER, course TEXT);
+INSERT INTO student_course VALUES(20757123, 'Computer Science');
 </code></pre>
 
 <p>We currently have something like:</p>
 <pre><code class="sql">example=# SELECT * FROM student_course;
     id    |      course      
 ----------+------------------
- 20757321 | Computer Science
+ 20757123 | Computer Science
 (1 row)
 </code></pre>
 
