@@ -46,17 +46,17 @@ example=# DELETE FROM student WHERE name='Jones';
 DELETE 1
 
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
+    id    |    name    
+----------+------------
  20777345 | Heisenberg
  20757123 | Rafferty
 (2 rows)
 ```
 
-And update 20757321's student name to `TOM`:
+And update 20757345's student name to `Tom`:
 
 ```sql
-example=# UPDATE student SET ID='20757321' WHERE name='Rafferty';
+example=# UPDATE student SET name='Tom' WHERE id=20757345;
 UPDATE 1
 
 example=# SELECT * FROM student;
