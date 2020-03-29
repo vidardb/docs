@@ -60,10 +60,10 @@ example=# UPDATE student SET name='Tom' WHERE id=20777345;
 UPDATE 1
 
 example=# SELECT * FROM student;
-    name    |    id    
-------------+----------
- Rafferty   | 20757321
- Heisenberg | 20777345
+    id    |   name   
+----------+----------
+ 20777345 | Tom
+ 20757123 | Rafferty
 (2 rows)
 ```
 
