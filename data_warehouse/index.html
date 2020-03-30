@@ -5,27 +5,27 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
+  
   <meta name="author" content="VidarDB Team">
-  <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Welcome to VidarDB - VidarDB</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Data warehouse - VidarDB</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="css/github_extra.css">
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/github_extra.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Welcome to VidarDB";
-    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_name = "Data warehouse";
+    var mkdocs_page_input_path = "data_warehouse.md";
     var mkdocs_page_url = null;
   </script>
   
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -41,9 +41,9 @@
 	<a href="https://www.vidardb.com">
 	<img src="https://raw.githubusercontent.com/vidardb/docs/master/docs/img/vidardb_logo.jpg" alt="VidarDB" style="width: 70%; height:70%; border-radius: 0%; display: block; margin: 0 auto; padding: 0px; background-color: transparent"/>
 	</a>
-        <a href="." class="icon icon-home"> VidarDB</a>
+        <a href=".." class="icon icon-home"> VidarDB</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -56,54 +56,43 @@
       
 
 
-  
-    
-    <li class="navtree toctree-l1 page current">
-      <a class="current" href=".">
-        Welcome to VidarDB
-      </a>
-    </li>
-    
-      
-
-
-
-
-  
-    
-      
-
-
   <li class="navtree toctree-l1 inactive">
-    <a class="" href="what_is_vidarDB/">What is VidarDB</a>
+    <a class="" href="..">Welcome to VidarDB</a>
   </li>
     
       
 
 
   <li class="navtree toctree-l1 inactive">
-    <a class="" href="run_vidarDB_with_docker/">Run VidarDB with Docker</a>
+    <a class="" href="../what_is_vidarDB/">What is VidarDB</a>
   </li>
     
       
 
 
   <li class="navtree toctree-l1 inactive">
-    <a class="" href="example/">VidarDB Examples</a>
+    <a class="" href="../run_vidarDB_with_docker/">Run VidarDB with Docker</a>
   </li>
     
       
 
 
   <li class="navtree toctree-l1 inactive">
-    <a class="" href="run_kmeans_with_vidarDB/">Run KMeans with VidarDB</a>
+    <a class="" href="../example/">VidarDB Examples</a>
   </li>
     
       
 
 
   <li class="navtree toctree-l1 inactive">
-    <a class="" href="faq/">Frequently Asked Questions</a>
+    <a class="" href="../run_kmeans_with_vidarDB/">Run KMeans with VidarDB</a>
+  </li>
+    
+      
+
+
+  <li class="navtree toctree-l1 inactive">
+    <a class="" href="../faq/">Frequently Asked Questions</a>
   </li>
     
   </ul>
@@ -116,7 +105,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">VidarDB</a>
+        <a href="..">VidarDB</a>
       </nav>
 
       
@@ -124,14 +113,14 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
-    <li>Welcome to VidarDB</li>
+    <li>Data warehouse</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vidardb/docs/edit/master/docs/index.md"
+        <a href="https://github.com/vidardb/docs/edit/master/docs/data_warehouse.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -141,20 +130,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-vidardb">Welcome to VidarDB</h1>
-<p><a href="https://travis-ci.org/vidardb/vidardb"><img alt="Build Status" src="https://travis-ci.org/vidardb/vidardb.svg?branch=master" /></a></p>
-<p>VidarDB is the world's first unified database system that can replace multiple data tools with a single unified database. It is open-source,  and actively developed and maintained by VidarDB team.</p>
+                <pre><code class="sql">CREATE DATABASE example;
+\c example;
+
+CREATE EXTENSION kv_fdw;  
+CREATE SERVER kv_server FOREIGN DATA WRAPPER kv_fdw;  
+CREATE FOREIGN TABLE student(id INTEGER, name TEXT, major TEXT, address TEXT) SERVER kv_server OPTIONS(storage 'column');
+
+INSERT INTO student VALUES(20757123, 'Rafferty', 'Computer Science', 'Waterloo');
+INSERT INTO student VALUES(20767234, 'Jones', 'Math', 'Boston');
+DELETE FROM student WHERE id=20757123;
+UPDATE student SET name='Tom' WHERE id=20767234;
+
+
+DROP FOREIGN TABLE student;  
+
+DROP SERVER kv_server;  
+DROP EXTENSION kv_fdw;  
+
+\c postgres  
+DROP DATABASE example;  
+</code></pre>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="what_is_vidarDB/" class="btn btn-neutral float-right" title="What is VidarDB">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>
@@ -183,18 +183,11 @@
       
       
       
-        <span style="margin-left: 15px"><a href="what_is_vidarDB/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2020-03-30 02:43:49
--->
