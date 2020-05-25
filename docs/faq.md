@@ -6,7 +6,7 @@ There are several fundamental differences.
 
 * Unlike most database systems relying on the data structure designed in the 1970s, VidarDB has designed a new data structure, which is a versatile data structure adaptive to and optimized for different workloads, such as operational, data analysis, streaming and even mixed of them. 
 
-* The data structure is designed for modern memory hierarchy, efficiently leveraging RAM, NVM, SSD, Disk as well as supporting smooth data flow among these storage tiers. 
+* The data structure is designed for modern memory hierarchy, efficiently leveraging RAM, NVRAM, SSD, Disk as well as supporting smooth data flow among these storage tiers. 
 
 * We have brought the machine learning ability into VidarDB, where users can run familiar machine learning algorithms inside VidarDB via SQL, without moving your data to other tools.
 
