@@ -3,7 +3,7 @@
 Welcome to this section, where you will get an overview of VidarDB.
 
 ## Basic Info
-VidarDB is a polymorphic database system for simplifying companies' data architecture, with the same interface as PostgreSQL and up to 10~100X speedup. It can replace multiple data tools (Message Queues, Server Caches, Operational Databases, Data warehouse, Machine Learning) with a single unified tool, thanks to its efficiency, and design to break the trade-off between simplicity (general databases) and efficiency (purpose-built databases).
+VidarDB is a polymorphic database system for simplifying companies' data architecture, with the same interface as PostgreSQL and up to 10~100X speedup. It can replace multiple data tools (Message Queues, Server Caches, Operational Databases, Data warehouse, Machine Learning) with a single unified system, thanks to its efficiency, and design to break the trade-off between simplicity (general databases) and efficiency (purpose-built databases).
 
 ## Target Problem
 Typically, companies have to install two groups of tools: one optimized for interactive client operations (e.g., message queue, server cache, operational database), and another for business analysis (e.g., data warehouse and machine learning). This deployment approach has two major drawbacks: First, it is time-consuming and costly, as multiple systems need to be maintained by expert administrators. Second, as the data need to be migrated between the different tools, it effects data freshness and reduces its business value.
