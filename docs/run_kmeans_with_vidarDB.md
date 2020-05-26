@@ -59,7 +59,7 @@ Now, the preparation is done. Let's move to the training part.
 
 ## Data Training
 
-This section is very simple and straightforward. Before training data, we need to enable AI support in `chicago_taxi_trips` database:
+This section is very simple and straightforward. Before training data, we need to enable AI support in `chicago_taxi_trips` database, assuming username is `postgres` without password. We can issue the following command in the shell:
 
 ```shell
 docker exec -it vidardb sh -c "install-madlib.sh -U postgres -D chicago_taxi_trips"
