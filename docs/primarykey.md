@@ -1,4 +1,4 @@
-VidarDB does not support the primary key syntax in SQL due to the limitation of the foreign data wrapper. The first attribute in the table is used as the primary key by VidarDB, so the value of this attribute should be unique and not null.  For example, in the following table <em>student</em>, the attribute <em>id</em> is used as the primary key.
+VidarDB does not support the primary key syntax in SQL due to the limitation of the foreign data wrapper. The first attribute in the table is used as the primary key in VidarDB, so the value of this attribute should be unique and not null.  For example, in the following table <em>student</em>, the attribute <em>id</em> is used as the primary key.
 
 ```sql
 CREATE FOREIGN TABLE student(
