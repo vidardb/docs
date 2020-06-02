@@ -1,4 +1,4 @@
-VidarDB does not support the primary key syntax in SQL due to the limitation of the foreign data wrapper. The first attribute in the table is used as the primary key in VidarDB, so the value of this attribute should be unique and not null.  For example, in the following table <em>student</em>, the attribute <em>id</em> is used as the primary key.
+VidarDB implicitly supports the primary key syntax in SQL. The first attribute in the created table is forced as the primary key in VidarDB, so the value of this attribute should be unique and not null. For example, in the following table `student`, the attribute `id` is used as the primary key.
 
 ```sql
 CREATE FOREIGN TABLE student(
@@ -21,7 +21,7 @@ CREATE FOREIGN TABLE shop (
     count     INTEGER
 ) SERVER kv_server;
 
-INSERT INTO shop VALUES (ROW('fuzzy dice', 42, 1.99), 1000);
+INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
 ```
 
 More information about the composite type can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/11/rowtypes.html)
