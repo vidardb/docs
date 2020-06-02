@@ -8,7 +8,7 @@
   
   <meta name="author" content="VidarDB Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Primarykey - VidarDB</title>
+  <title>vidarDB 101 - VidarDB</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Primarykey";
-    var mkdocs_page_input_path = "primarykey.md";
+    var mkdocs_page_name = "vidarDB 101";
+    var mkdocs_page_input_path = "vidarDB_101.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -117,10 +117,10 @@
     
       
     
-    <li>Primarykey</li>
+    <li>vidarDB 101</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vidardb/docs/edit/master/docs/primarykey.md"
+        <a href="https://github.com/vidardb/docs/edit/master/docs/vidarDB_101.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -130,7 +130,7 @@
           <div role="main">
             <div class="section">
               
-                <p>VidarDB does not support the primary key syntax in SQL due to the limitation of the foreign data wrapper. The first attribute in the table is used as the primary key in VidarDB, so the value of this attribute should be unique and not null.  For example, in the following table <em>student</em>, the attribute <em>id</em> is used as the primary key.</p>
+                <p>VidarDB implicitly supports the primary key syntax in SQL. The first attribute in the created table is forced as the primary key in VidarDB, so the value of this attribute should be unique and not null. For example, in the following table <code>student</code>, the attribute <code>id</code> is used as the primary key.</p>
 <pre><code class="sql">CREATE FOREIGN TABLE student(
     id      INTEGER, 
     name    TEXT
@@ -149,7 +149,7 @@ CREATE FOREIGN TABLE shop (
     count     INTEGER
 ) SERVER kv_server;
 
-INSERT INTO shop VALUES (ROW('fuzzy dice', 42, 1.99), 1000);
+INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
 </code></pre>
 
 <p>More information about the composite type can be found in the <a href="https://www.postgresql.org/docs/11/rowtypes.html">PostgreSQL documentation</a></p>
