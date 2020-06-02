@@ -8,6 +8,7 @@ nav:
     - 'Welcome to VidarDB': 'index.md'
     - 'What is VidarDB': 'what_is_vidarDB.md'
     - 'Run VidarDB with Docker': 'run_vidarDB_with_docker.md'
+    - 'VidarDB 101': 'vidarDB_101.md'
     - 'VidarDB Examples': 'example.md'
     - 'Run KMeans with VidarDB': 'run_kmeans_with_vidarDB.md'
     - 'Frequently Asked Questions': 'faq.md'
