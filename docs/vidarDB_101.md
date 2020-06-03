@@ -7,6 +7,15 @@ CREATE FOREIGN TABLE student(
 ) SERVER kv_server;
 ```
 
+If there is no proper attribute that can be used as the primary key,  a table needs to add an auto-increment sequence as the first attribute. VidarDB supports the `SERIAL` or `BIGSERIAL` type to create an auto-increment sequence. An example is as follows.
+
+```sql
+CREATE FOREIGN TABLE student(
+    id      SERIAL, 
+    name    TEXT
+) SERVER kv_server;
+```
+
 VidarDB supports the composite type in PostgreSQL. When a composite primary key is required, VidarDB allows multiple attributes to be combined into a composite type. The following example uses such a composite type as the primary key.
 
 ```sql
