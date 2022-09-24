@@ -145,21 +145,19 @@
             <div class="section">
               
                 <p>VidarDB implicitly supports the primary key syntax in SQL. The first attribute in the created table is forced as the primary key in VidarDB, so the value of this attribute should be unique and not null. For example, in the following table <code>student</code>, the attribute <code>id</code> is used as the primary key.</p>
-<pre><code class="sql">CREATE FOREIGN TABLE student(
+<pre><code class="language-sql">CREATE FOREIGN TABLE student(
     id      INTEGER, 
     name    TEXT
 ) SERVER kv_server;
 </code></pre>
-
 <p>If there is no proper attribute that can be used as the primary key,  a table needs to add an auto-increment sequence as the first attribute. VidarDB supports the <code>SERIAL</code> or <code>BIGSERIAL</code> type to create an auto-increment sequence. An example is as follows.</p>
-<pre><code class="sql">CREATE FOREIGN TABLE student(
+<pre><code class="language-sql">CREATE FOREIGN TABLE student(
     id      SERIAL, 
     name    TEXT
 ) SERVER kv_server;
 </code></pre>
-
 <p>VidarDB supports the composite type in PostgreSQL. When a composite primary key is required, VidarDB allows multiple attributes to be combined into a composite type. The following example uses such a composite type as the primary key.</p>
-<pre><code class="sql">CREATE TYPE inventory_item AS (
+<pre><code class="language-sql">CREATE TYPE inventory_item AS (
     name            TEXT,
     supplier_id     INTEGER,
     price           NUMERIC
@@ -172,7 +170,6 @@ CREATE FOREIGN TABLE shop (
 
 INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
 </code></pre>
-
 <p>More information about the composite type can be found in the <a href="https://www.postgresql.org/docs/11/rowtypes.html">PostgreSQL documentation</a></p>
               
             </div>
@@ -194,7 +191,7 @@ INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p>2020 VidarDB Inc. All Rights Reserved.</p>
+      <p>2020-2022 VidarDB Inc. All Rights Reserved.</p>
     
   </div>
 
@@ -211,7 +208,7 @@ INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/vidardb/docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/vidardb/docs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../run_vidarDB_with_docker/" style="color: #fcfcfc;">&laquo; Previous</a></span>
