@@ -168,21 +168,24 @@
 <p>In this section, we are going to show some basic VidarDB commands and simple interactions with PostgreSQL.</p>
 <h2 id="basic-commands">Basic Commands</h2>
 <p>To create a database <code>example</code> and switch to it:</p>
-<pre><code class="language-sql">CREATE DATABASE example;
+<pre><code class="sql">CREATE DATABASE example;
 \c example;
 </code></pre>
+
 <p>Create a new table <code>student</code> using VidarDB's data engine. Claiming <code>EXTENSION</code> and <code>SERVER</code> are needed to trigger VidarDB's engine:</p>
-<pre><code class="language-sql">CREATE EXTENSION kv_fdw;
+<pre><code class="sql">CREATE EXTENSION kv_fdw;
 CREATE SERVER kv_server FOREIGN DATA WRAPPER kv_fdw;
 CREATE FOREIGN TABLE student(id INTEGER, name TEXT) SERVER kv_server;
 </code></pre>
+
 <p>Let's try to insert some sample data into our new table:</p>
-<pre><code class="language-sql">INSERT INTO student VALUES(20757123, 'Rafferty');
+<pre><code class="sql">INSERT INTO student VALUES(20757123, 'Rafferty');
 INSERT INTO student VALUES(20767234, 'Jones');
 INSERT INTO student VALUES(20777345, 'Heisenberg');
 </code></pre>
+
 <p>In the next step, use <code>SELECT</code> statement to query students' information:</p>
-<pre><code class="language-sql">example=# SELECT * FROM student;
+<pre><code class="sql">example=# SELECT * FROM student;
     id    |    name    
 ----------+------------
  20767234 | Jones
@@ -190,8 +193,9 @@ INSERT INTO student VALUES(20777345, 'Heisenberg');
  20757123 | Rafferty
 (3 rows)
 </code></pre>
+
 <p>Also have a try at <code>DELETE</code> statement:</p>
-<pre><code class="language-sql">example=# DELETE FROM student WHERE name='Jones';
+<pre><code class="sql">example=# DELETE FROM student WHERE name='Jones';
 DELETE 1
 
 example=# SELECT * FROM student;
@@ -201,8 +205,9 @@ example=# SELECT * FROM student;
  20757123 | Rafferty
 (2 rows)
 </code></pre>
+
 <p>And update 20777345's student name to <code>Tom</code>:</p>
-<pre><code class="language-sql">example=# UPDATE student SET name='Tom' WHERE id=20777345;
+<pre><code class="sql">example=# UPDATE student SET name='Tom' WHERE id=20777345;
 UPDATE 1
 
 example=# SELECT * FROM student;
@@ -212,25 +217,29 @@ example=# SELECT * FROM student;
  20757123 | Rafferty
 (2 rows)
 </code></pre>
+
 <h2 id="interaction-with-postgresql">Interaction with PostgreSQL</h2>
 <p>VidarDB works seamlessily with the original PostgreSQL. Now, we will create another new table using PostgreSQL's storage engine and add one row into it:</p>
-<pre><code class="language-sql">CREATE TABLE student_course(id INTEGER, course TEXT);
+<pre><code class="sql">CREATE TABLE student_course(id INTEGER, course TEXT);
 INSERT INTO student_course VALUES(20757123, 'Computer Science');
 </code></pre>
+
 <p>We currently have something like:</p>
-<pre><code class="language-sql">example=# SELECT * FROM student_course;
+<pre><code class="sql">example=# SELECT * FROM student_course;
     id    |      course      
 ----------+------------------
  20757123 | Computer Science
 (1 row)
 </code></pre>
+
 <p>Let's try with the <code>JOIN</code> statement with the table <code>student</code> (created by VidarDB engine) and <code>student_course</code> (created by PostgreSQL engine):</p>
-<pre><code class="language-sql">example=# SELECT student.name FROM student, student_course WHERE student.id = student_course.id;
+<pre><code class="sql">example=# SELECT student.name FROM student, student_course WHERE student.id = student_course.id;
    name   
 ----------
  Rafferty
 (1 row)
 </code></pre>
+
 <p>(More examples will come soon!)</p>
               
             </div>
@@ -269,7 +278,7 @@ INSERT INTO student_course VALUES(20757123, 'Computer Science');
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/vidardb/docs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/vidardb/docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../vidarDB_101/" style="color: #fcfcfc;">&laquo; Previous</a></span>

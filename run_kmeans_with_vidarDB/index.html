@@ -178,17 +178,20 @@
 <p>VidarDB natively supports AI, which is built on <a href="https://madlib.apache.org/index.html">MADlib</a> allowing you to perfrom various commonly-used AI algorithms in SQL easily. This page gives you a good example of using KMeans clustering algorithm to train data in VidarDB. It assumes VidarDB is already installed. If not, please head over to the <a href="../run_vidarDB_with_docker/">Run VidarDB with Docker</a> section.</p>
 <h2 id="preparation">Preparation</h2>
 <p>Make sure <code>psql</code> is installed on your computer. If not, for Debian users:  </p>
-<pre><code class="language-bash">sudo apt-get install postgresql-client
+<pre><code class="bash">sudo apt-get install postgresql-client
 </code></pre>
+
 <p>Clone and go into the VidarDB's util repository:</p>
-<pre><code class="language-sh">git clone https://github.com/vidardb/util.git &amp;&amp; cd util
+<pre><code class="sh">git clone https://github.com/vidardb/util.git &amp;&amp; cd util
 </code></pre>
+
 <p>Import Chicago Taxi Trips data:</p>
-<pre><code class="language-sh">cd ./util-notebook/kmeans/ &amp;&amp; psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-data_chicago_taxi_trips.sql
+<pre><code class="sh">cd ./util-notebook/kmeans/ &amp;&amp; psql -h 127.0.0.1 -p 5432 -U postgres -f ./import-data_chicago_taxi_trips.sql
 </code></pre>
+
 <p>This will also create a new database called <code>chicago_taxi_trips</code>.</p>
 <p>Then, create a new table <code>chicago_taxi_trips_change</code> for the data training:</p>
-<pre><code class="language-sql">-- connect to the local vidardb
+<pre><code class="sql">-- connect to the local vidardb
 psql -h 127.0.0.1 -p 5432 -U postgres
 
 -- connect to the database
@@ -215,13 +218,15 @@ SELECT taxi_id,
        array_cat(array[pickup_latitude], array[pickup_longitude])
 FROM chicago_taxi_trips;
 </code></pre>
+
 <p>Now, the preparation is done. Let's move to the training part.</p>
 <h2 id="data-training">Data Training</h2>
 <p>This section is very simple and straightforward. Before training data, we need to enable AI support in <code>chicago_taxi_trips</code> database, assuming username is <code>postgres</code> without password. We can issue the following command in the shell:</p>
-<pre><code class="language-shell">docker exec -it vidardb sh -c &quot;install-madlib.sh -U postgres -D chicago_taxi_trips&quot;
+<pre><code class="shell">docker exec -it vidardb sh -c &quot;install-madlib.sh -U postgres -D chicago_taxi_trips&quot;
 </code></pre>
+
 <p>Try the following SQL commands to train data with KMeans:</p>
-<pre><code class="language-sql">-- connect to the local vidardb
+<pre><code class="sql">-- connect to the local vidardb
 psql -h 127.0.0.1 -p 5432 -U postgres
 
 -- connect to the database
@@ -242,12 +247,14 @@ SELECT * FROM madlib.kmeanspp(
     0.001                          -- Fraction of centroids reassigned to keep iterating 
     );
 </code></pre>
+
 <h2 id="perform-clustering-predictions">Perform Clustering Predictions</h2>
 <p>Predict the cluster_id of each trip with the model we have just trained:</p>
-<pre><code class="language-sql">SELECT trips_data.*, (madlib.closest_column(centroids, row_vec)).column_id AS cluster_id
+<pre><code class="sql">SELECT trips_data.*, (madlib.closest_column(centroids, row_vec)).column_id AS cluster_id
     FROM chicago_taxi_trips_change AS trips_data, km_result
     ORDER BY trips_data.row_id DESC LIMIT 10;
 </code></pre>
+
 <p>We can get some results like this:</p>
 <pre><code> row_id | taxi_id | pickup_latitude | pickup_longitude |           row_vec            | cluster_id 
 --------+---------+-----------------+------------------+------------------------------+------------
@@ -262,6 +269,7 @@ SELECT * FROM madlib.kmeanspp(
     991 |    7564 |           41.88 |           -87.62 | {41.884987192,-87.620992913} |          0
     990 |    7065 |           41.89 |           -87.63 | {41.892507781,-87.626214906} |          0
 </code></pre>
+
 <h2 id="reference">Reference</h2>
 <p>The data this example used come from <a href="https://data.cityofchicago.org/Transportation/Taxi-Trips/wrvz-psew">Taxi Trips | City of Chicago | Data Portal</a>.</p>
 <p>(More examples will come soon!)</p>
@@ -302,7 +310,7 @@ SELECT * FROM madlib.kmeanspp(
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/vidardb/docs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/vidardb/docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../example/" style="color: #fcfcfc;">&laquo; Previous</a></span>
