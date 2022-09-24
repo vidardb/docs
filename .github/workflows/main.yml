@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  mkdocs_deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.7'
+    - run: |
+        export ACCESS_TOKEN="${{ secrets.ACCESS_TOKEN }}"
+        pip3 install -r requirements.txt
+        git clone https://github.com/xingweitian/mkdocs-rtd-dropdown.git
+        cd mkdocs-rtd-dropdown && python3 setup.py install && cd ..
+        git clean -f -d -x
+        . ./deploy-to-gh-pages.sh
