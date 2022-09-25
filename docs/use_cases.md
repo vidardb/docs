@@ -4,13 +4,13 @@
 
 Here are a couple of use cases where query speed improvement should have significant positive business impact.
 
-### Case 1:
+### Case 1
 
 A company has created a consumer-facing app. The app uses an API to plug into a cloud-based data warehouse. Queries by consumers submit and return over the 5g web.
 
 We know that in recent years, online consumer attention spans have been significantly reduced. We all expect near-instant web-based responses, or we lose patience. If the consumer’s query is not served in <9 seconds (a goldfish’s attention span) it is likely they will abandon the activity, and perhaps the app.
 
-### Case 2:
+### Case 2
 
 An in-house analyst at a Fortune 500 company writes a complex query needed to complete a business report. While the query disappears into the ether the analyst grumbles about the bottleneck that consumes 80% of each day and then goes for a coffee to wait.
 
