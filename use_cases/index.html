@@ -8,7 +8,7 @@
   
   <meta name="author" content="VidarDB Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>vidarDB 101 - VidarDB</title>
+  <title>Use Cases - VidarDB</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "vidarDB 101";
-    var mkdocs_page_input_path = "vidarDB_101.md";
+    var mkdocs_page_name = "Use Cases";
+    var mkdocs_page_input_path = "use_cases.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -77,9 +77,56 @@
       
 
 
-  <li class="navtree toctree-l1 inactive">
-    <a class="" href="../use_cases/">Use Cases</a>
+  
+    
+    <li class="navtree toctree-l1 page current">
+      <a class="current" href="./">
+        Use Cases
+      </a>
+    </li>
+    
+      
+
+
+
+  <li class="toctree-l1 current">
+    <ul class="subnav-l1 current">
+    
+      
+          
+
+  <li class="toctree-l2 current with-children">
+    <a href="#the-benefit-of-analytic-speed">
+      The Benefit of Analytic Speed
+      <span class="toctree-expand"></span>
+    </a>
   </li>
+
+
+
+  <li class="toctree-l2 current">
+    <ul class="subnav-l2 current">
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#case-1">Case 1:</a>
+        </li>
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#case-2">Case 2:</a>
+        </li>
+    
+    </ul>
+  </li>
+
+      
+    
+    </ul>
+  </li>
+
+
+  
     
       
 
@@ -110,10 +157,10 @@
     
       
     
-    <li>vidarDB 101</li>
+    <li>Use Cases</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vidardb/docs/edit/master/docs/vidarDB_101.md"
+        <a href="https://github.com/vidardb/docs/edit/master/docs/use_cases.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -123,40 +170,30 @@
           <div role="main">
             <div class="section">
               
-                <p>VidarDB implicitly supports the primary key syntax in SQL. The first attribute in the created table is forced as the primary key in VidarDB, so the value of this attribute should be unique and not null. For example, in the following table <code>student</code>, the attribute <code>id</code> is used as the primary key.</p>
-<pre><code class="sql">CREATE FOREIGN TABLE student(
-    id      INTEGER, 
-    name    TEXT
-) SERVER kv_server;
-</code></pre>
-
-<p>If there is no proper attribute that can be used as the primary key,  a table needs to add an auto-increment sequence as the first attribute. VidarDB supports the <code>SERIAL</code> or <code>BIGSERIAL</code> type to create an auto-increment sequence. An example is as follows.</p>
-<pre><code class="sql">CREATE FOREIGN TABLE student(
-    id      SERIAL, 
-    name    TEXT
-) SERVER kv_server;
-</code></pre>
-
-<p>VidarDB supports the composite type in PostgreSQL. When a composite primary key is required, VidarDB allows multiple attributes to be combined into a composite type. The following example uses such a composite type as the primary key.</p>
-<pre><code class="sql">CREATE TYPE inventory_item AS (
-    name            TEXT,
-    supplier_id     INTEGER,
-    price           NUMERIC
-);
-
-CREATE FOREIGN TABLE shop (
-    item      inventory_item,
-    count     INTEGER
-) SERVER kv_server;
-
-INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
-</code></pre>
-
-<p>More information about the composite type can be found in the <a href="https://www.postgresql.org/docs/11/rowtypes.html">PostgreSQL documentation</a></p>
+                <h1 id="use-cases">Use Cases</h1>
+<h2 id="the-benefit-of-analytic-speed">The Benefit of Analytic Speed</h2>
+<p>Here are a couple of use cases where query speed improvement should have significant positive business impact.</p>
+<h3 id="case-1">Case 1:</h3>
+<p>A company has created a consumer-facing app. The app uses an API to plug into a cloud-based data warehouse. Queries by consumers submit and return over the 5g web.</p>
+<p>We know that in recent years, online consumer attention spans have been significantly reduced. We all expect near-instant web-based responses, or we lose patience. If the consumer’s query is not served in &lt;9 seconds (a goldfish’s attention span) it is likely they will abandon the activity, and perhaps the app.</p>
+<h3 id="case-2">Case 2:</h3>
+<p>An in-house analyst at a Fortune 500 company writes a complex query needed to complete a business report. While the query disappears into the ether the analyst grumbles about the bottleneck that consumes 80% of each day and then goes for a coffee to wait.</p>
+<p>As much as 80% of an analyst’s time can be spent constructing and waiting on queries.  If the queries could execute an order of magnitude faster, the analyst would be significantly more productive. Time spent waiting might be effectively eliminated.</p>
+<p>These are just two data use cases where VidarDB’s patented analytic technology would have significant impact on businesses that use big data analysis within their operations.</p>
+<p>Of course, the extreme data ingestion speed would support the analytic results being based on real time data too.</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq/" class="btn btn-neutral float-right" title="Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../specification/" class="btn btn-neutral" title="Specification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -184,6 +221,10 @@ INSERT INTO shop VALUES (('fuzzy dice', 42, 1.99), 1000);
           <a href="https://github.com/vidardb/docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../specification/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
