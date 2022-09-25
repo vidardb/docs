@@ -2,6 +2,17 @@
 
 This document describes the tech specification of VidarDB.
 
+## Fast Data Ingestion
+
+Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed the global standard TPC-H data ingestion benchmark tests on both HDD and SSD with randomized input of the lineitem table (the biggest table in the dataset), scaling from 100 MB to 50 GB.
+
+With an index on the primary key, B-tree of PostgreSQL and VidarDB’s patented data structure, we observed that data ingestion is up to 70 and 35 times faster than PostgreSQL for HDD and SSD respectively.  VidarDB’s data ingestion speed remained the same throughout the testing, while PostgreSQL’s performance decreases as the dataset grows.
+
+Similar results would be observed in other places, as long as the disk side is a bottleneck with growing data amounts. The science behind this dramatic difference is the B-Tree’s delete and rebuild mechanism working to keep the index self balanced during data input.
+
+The VidarDB invention does not have any similar limitation to performance.
+
+
 ## Fast Analytics
 
 Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed six of the global standard TPC-H query tests with a 20 GB standard dataset using a commodity laptop. Although only six of the tests are being reported here, others are in progress. 
