@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-## How is VidarDB different from other database systems?
+<!-- ## How is VidarDB different from other database systems?
 
 There are several fundamental differences. 
 
@@ -39,4 +39,4 @@ Yes, VidarDB supports the SQL syntax in PostgreSQL. Users can even call AI algor
 ## How is VidarDB licensed?
 
 VidarDB is licensed under the modified BSD 3-Clause Clear License. Anyone, no matter person or enterprise, can use it for free. But selling it directly as a service in the cloud is prohibited. 
-
+ -->
