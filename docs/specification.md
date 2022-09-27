@@ -6,12 +6,11 @@ This document describes the tech specification of VidarDB.
 
 Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed the global standard TPC-H data ingestion benchmark tests on both HDD and SSD with randomized input of the lineitem table (the biggest table in the dataset), scaling from 100 MB to 50 GB.
 
-With an index on the primary key, B-tree of PostgreSQL and VidarDB’s patented data structure, we observed that data ingestion is up to 70 and 35 times faster than PostgreSQL for HDD and SSD respectively.  VidarDB’s data ingestion speed remained the same throughout the testing, while PostgreSQL’s performance decreases as the dataset grows.
+With an index on the primary key, B-Tree of PostgreSQL and VidarDB’s patented FADS data structure, we observed that data ingestion is up to 70 and 35 times faster than PostgreSQL for HDD and SSD respectively.  VidarDB’s data ingestion speed remained the same throughout the testing, while PostgreSQL’s performance decreases as the dataset grows.
 
 Similar results would be observed in other places, as long as the disk side is a bottleneck with growing data amounts. The science behind this dramatic difference is the B-Tree’s delete and rebuild mechanism working to keep the index self balanced during data input.
 
 The VidarDB invention does not have any similar limitation to performance.
-
 
 ## Fast Analytics
 
@@ -51,7 +50,7 @@ In most large current data collection and analysis systems, the data are collect
 
 After 50 years with little change to the data structure, Shichao Jin invented a new data structure. That invention was awarded a patent in 2021.
 
-This revolutionary new structure supports significant speed increases in both data ingestion and data analysis. It may disrupt the RDBMS marketplace by making the operational and analytic database separation paradigm obsolete.
+This revolutionary Flexible Advanced Data Structure (FADS) supports significant speed increases in both data ingestion and data analysis. It may disrupt the RDBMS marketplace by making the operational and analytic database separation paradigm obsolete.
 
 Using the VidarDB extension to PostgreSQL allows the use of a single live database because data ingestion is so fast. There is no data latency forced by the separation of the functionality of the two databases. There is just ‘the database’.
 
