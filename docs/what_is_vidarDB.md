@@ -31,3 +31,5 @@ Additionally, it is a versatile, polymorphic data structure, which will adapt to
 The VidarDB core technology exists in software layers well away from the human interfaces of PostgreSQL. As an extension to PostgreSQL, users retain all the benefits of that system, while gaining the speed and simplicity provided by an essentially invisible software layer.
 
 VidarDB is not only a storage engine, because it embeds deeply in PostgreSQL and reutilize PostgreSQL’s many components, including SQL interface. Additionally, VidarDB has its own executor based on PostgreSQL’s.
+
+<img src="../img/architecture.png" alt="drawing" width="60%" height="60%" style="display: block; margin-left: auto; margin-right: auto;"/>
