@@ -2,6 +2,14 @@
 
 This document describes the tech specification of VidarDB.
 
+## Fast Analytics
+
+Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed six of the global standard TPC-H query tests with a 20 GB standard dataset using a commodity laptop. Although only six of the tests are being reported here, others are in progress. 
+
+The speed improvement varies with the query performed, but the average performance improvement shows a 10 times increase over PostgreSQL alone.  To assure an ‘apples to apples’ comparison, we didn’t build any extra indexes on the data, and used only a single process.  These 6 queries contain both scan and join, where we forced both systems to use the widely accepted hash join. 
+
+The VidarDB extension is much better than the PostgreSQL alone, and the order of magnitude increase in query speed has a direct cost benefit in execution time, hardware cost, and finally labour cost of the analysts creating information from a data set.
+
 ## Fast Data Ingestion
 
 Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed the global standard TPC-H data ingestion benchmark tests on both HDD and SSD with randomized input of the lineitem table (the biggest table in the dataset), scaling from 100 MB to 50 GB.
@@ -11,14 +19,6 @@ With an index on the primary key, B-Tree of PostgreSQL and VidarDB’s patented 
 Similar results would be observed in other places, as long as the disk side is a bottleneck with growing data amounts. The science behind this dramatic difference is the B-Tree’s delete and rebuild mechanism working to keep the index self balanced during data input.
 
 The VidarDB invention does not have any similar limitation to performance.
-
-## Fast Analytics
-
-Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed six of the global standard TPC-H query tests with a 20 GB standard dataset using a commodity laptop. Although only six of the tests are being reported here, others are in progress. 
-
-The speed improvement varies with the query performed, but the average performance improvement shows a 10 times increase over PostgreSQL alone.  To assure an ‘apples to apples’ comparison, we didn’t build any extra indexes on the data, and used only a single process.  These 6 queries contain both scan and join, where we forced both systems to use the widely accepted hash join. 
-
-The VidarDB extension is much better than the PostgreSQL alone, and the order of magnitude increase in query speed has a direct cost benefit in execution time, hardware cost, and finally labour cost of the analysts creating information from a data set.
 
 ## PostgreSQL Extension
 
