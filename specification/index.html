@@ -87,12 +87,12 @@
     
       
         <li class="toctree-l2">
-          <a class="toctree-l3" href="#fast-data-ingestion">Fast Data Ingestion</a>
+          <a class="toctree-l3" href="#fast-analytics">Fast Analytics</a>
         </li>
     
       
         <li class="toctree-l2">
-          <a class="toctree-l3" href="#fast-analytics">Fast Analytics</a>
+          <a class="toctree-l3" href="#fast-data-ingestion">Fast Data Ingestion</a>
         </li>
     
       
@@ -167,15 +167,15 @@
               
                 <h1 id="specification">Specification</h1>
 <p>This document describes the tech specification of VidarDB.</p>
+<h2 id="fast-analytics">Fast Analytics</h2>
+<p>Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed six of the global standard TPC-H query tests with a 20 GB standard dataset using a commodity laptop. Although only six of the tests are being reported here, others are in progress. </p>
+<p>The speed improvement varies with the query performed, but the average performance improvement shows a 10 times increase over PostgreSQL alone.  To assure an ‘apples to apples’ comparison, we didn’t build any extra indexes on the data, and used only a single process.  These 6 queries contain both scan and join, where we forced both systems to use the widely accepted hash join. </p>
+<p>The VidarDB extension is much better than the PostgreSQL alone, and the order of magnitude increase in query speed has a direct cost benefit in execution time, hardware cost, and finally labour cost of the analysts creating information from a data set.</p>
 <h2 id="fast-data-ingestion">Fast Data Ingestion</h2>
 <p>Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed the global standard TPC-H data ingestion benchmark tests on both HDD and SSD with randomized input of the lineitem table (the biggest table in the dataset), scaling from 100 MB to 50 GB.</p>
 <p>With an index on the primary key, B-Tree of PostgreSQL and VidarDB’s patented FADS data structure, we observed that data ingestion is up to 70 and 35 times faster than PostgreSQL for HDD and SSD respectively.  VidarDB’s data ingestion speed remained the same throughout the testing, while PostgreSQL’s performance decreases as the dataset grows.</p>
 <p>Similar results would be observed in other places, as long as the disk side is a bottleneck with growing data amounts. The science behind this dramatic difference is the B-Tree’s delete and rebuild mechanism working to keep the index self balanced during data input.</p>
 <p>The VidarDB invention does not have any similar limitation to performance.</p>
-<h2 id="fast-analytics">Fast Analytics</h2>
-<p>Of course, performance improvements must be reported using a standard methodology to allow for system to system comparisons.  We have executed six of the global standard TPC-H query tests with a 20 GB standard dataset using a commodity laptop. Although only six of the tests are being reported here, others are in progress. </p>
-<p>The speed improvement varies with the query performed, but the average performance improvement shows a 10 times increase over PostgreSQL alone.  To assure an ‘apples to apples’ comparison, we didn’t build any extra indexes on the data, and used only a single process.  These 6 queries contain both scan and join, where we forced both systems to use the widely accepted hash join. </p>
-<p>The VidarDB extension is much better than the PostgreSQL alone, and the order of magnitude increase in query speed has a direct cost benefit in execution time, hardware cost, and finally labour cost of the analysts creating information from a data set.</p>
 <h2 id="postgresql-extension">PostgreSQL Extension</h2>
 <p>The design and implementation of VidarDB has followed a principle of complete non-intrusiveness, which means your PostgreSQL remains intact when the VidarDB extension is installed.  At the same time, you can benefit from the speed of VidarDB with the familiar PostgreSQL front end. Just think of Chrome and the Chrome extension for ease of understanding. Furthermore, VidarDB is configurable through the same configure file as PostgreSQL. </p>
 <p>The VidarDB extension can exist in as little as 10 MB on disk and 10 MB in RAM.  It can be installed in about 10 minutes. Uninstallation of VidarDB is also easy, needing only 1 minute to remove all traces of VidarDB.</p>
