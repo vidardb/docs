@@ -44,14 +44,14 @@ For an existing data centre, computer hardware is used more efficiently by makin
 
 ## Immediacy of Data Analysis
 
-In the 1970s, binary tree data structures were generalized to the B-Tree structure. This invention allowed for nodes to have more than two children.  This structure is still used by many relational database management systems (RDBMS) today.
+Shichao Jin invented our FADS data structure in 2019, and was granted a patent in 2021. It was the first significant invention in the data structure area since the B-Tree 50 years ago. The B-Tree structure is still used by many relational database management systems (RDBMS) today because it is suitable for disk access by extending simple binary tree structures to allow nodes to have more than two children.
 
-In most large current data collection and analysis systems, the data are collected all day in an operational database and then copied to an analytic database overnight. Of course, that is a very time-consuming task where columns of a table are heavily indexed.
+In most large current data collection and analysis systems, the data are collected all day in an operational database and then copied to an analytic database overnight. Of course, that copy process is very time-consuming where columns of a table are heavily indexed.
 
-After 50 years with little change to the data structure, Shichao Jin invented a new data structure. That invention was awarded a patent in 2021.
+Our FADS invention enables both very fast data analysis and ingestion without the delays associated with the old structures.
 
-This revolutionary Flexible Advanced Data Structure (FADS) supports significant speed increases in both data ingestion and data analysis. It may disrupt the RDBMS marketplace by making the operational and analytic database separation paradigm obsolete.
+Because the VidarDB system ingests data up to 70 times faster, we can imagine dumping data 70 times as often: say, every 20 minutes. Business Intelligence (BI) from an analytic query would have significantly lower latency. It would be approaching real time.
 
-Using the VidarDB extension to PostgreSQL allows the use of a single live database because data ingestion is so fast. There is no data latency forced by the separation of the functionality of the two databases. There is just ‘the database’.
+As the business world moves more and more toward data-driven decision-making, the currency of BI becomes a key success factor. The length of time we are allowed for decisions has become quite short.
 
-Many database users don’t even know that there are two different functional database systems.  Our invention has simplified the technology, so they won’t have to learn about the difference.
+So, earlier and faster are better.
